@@ -10,6 +10,7 @@ using MitsubishiLaserMES.Core.Models.Eap;
 using MitsubishiLaserMES.Core.Services.Coordination;
 using Protocol.Core.Messages;
 using Protocol.Core.Enums;
+using MitsubishiLaserMES.WinForms;
 
 namespace MitsubishiLaserMES.WinForms.Forms
 {
@@ -18,7 +19,8 @@ namespace MitsubishiLaserMES.WinForms.Forms
         private readonly IMesCoordinator _coordinator;
         private readonly AppConfig _config;
         private bool _isEnglish = false;
-
+        private bool _isEngineerMode = false;
+        
         /// <summary>
         /// 提供 Visual Studio 設計工具 (WinForms Designer) 視覺化檢視與拖拉排版使用的無參數建構函式
         /// </summary>
@@ -39,11 +41,13 @@ namespace MitsubishiLaserMES.WinForms.Forms
             _coordinator = coordinator ?? throw new ArgumentNullException(nameof(coordinator));
             _config = config ?? new AppConfig();
 
+            InitEngineerRoleFeature(); // 初始化工程師權限切換功能
             BindCoordinatorEvents();
             BindFormEvents();
             InitSampleData();
             RestoreTrackedInOrders();
             UpdateEapLed();
+            SetEngineerMode(false);    // 程式啟動預設為 OP 介面 (隱藏紅框區域)
         }
 
         private void BindCoordinatorEvents()
@@ -809,6 +813,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
                 btnBrowseTestPrg.Text = "Browse...";
                 lblTestCnd.Text = "Condition File:";
                 lblTestSheet.Text = "Sheet Num:";
+                btnRoleSwitch.Text = _isEngineerMode ? "Engineer" : "OP Mode";
             }
             else
             {
@@ -840,6 +845,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
                 btnBrowseTestPrg.Text = "瀏覽...";
                 lblTestCnd.Text = "加工條件檔:";
                 lblTestSheet.Text = "加工片數:";
+                btnRoleSwitch.Text = _isEngineerMode ? "工程師模式" : "OP 模式";
             }
         }
 
@@ -855,5 +861,223 @@ namespace MitsubishiLaserMES.WinForms.Forms
                 action();
             }
         }
+        private void InitEngineerRoleFeature()
+        {
+            this.KeyPreview = true;
+            this.KeyDown += (s, e) =>
+            {
+                if (e.Control && e.Shift && e.KeyCode == Keys.E)
+                {
+                    e.SuppressKeyPress = true;
+                    HandleRoleSwitchClick();
+                }
+            };
+
+            btnRoleSwitch.Cursor = Cursors.Hand;
+            btnRoleSwitch.Click += (s, e) => HandleRoleSwitchClick();
+            btnRoleSwitch.BringToFront();
+        }
+
+        private void HandleRoleSwitchClick()
+        {
+            if (!_isEngineerMode)
+            {
+                using var loginForm = new EngineerLoginForm("1234");
+                if (loginForm.ShowDialog(this) == DialogResult.OK)
+                {
+                    SetEngineerMode(true);
+                }
+            }
+            else
+            {
+                SetEngineerMode(false);
+            }
+        }
+
+        private void SetEngineerMode(bool isEngineer)
+        {
+            _isEngineerMode = isEngineer;
+
+            grpOpcStatus.Visible = isEngineer;
+            grpResult.Visible = isEngineer;
+
+            if (isEngineer)
+            {
+                if (!tabMain.TabPages.Contains(tabItTest))
+                    tabMain.TabPages.Add(tabItTest);
+            }
+            else
+            {
+                if (tabMain.TabPages.Contains(tabItTest))
+                {
+                    tabMain.SelectedTab = tabWorkOrder;
+                    tabMain.TabPages.Remove(tabItTest);
+                }
+            }
+
+            if (isEngineer)
+            {
+                this.MinimumSize = new Size(1180, 800);
+                if (this.WindowState == FormWindowState.Normal)
+                    this.ClientSize = new Size(1164, 761);
+
+                tabMain.Height = this.ClientSize.Height - 115 - 140;
+                grpOrderInfo.Height = 235;
+                grpTrackedInList.Height = 235;
+
+                grpOrderInfo.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+                grpTrackedInList.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+
+                btnRoleSwitch.Text = _isEnglish ? "Engineer" : "工程師模式";
+                btnRoleSwitch.BackColor = Color.MistyRose;
+                btnRoleSwitch.ForeColor = Color.DarkRed;
+                this.Text = "MES - 2026/09/16 [工程師權限]";
+            }
+            else
+            {
+                this.MinimumSize = new Size(1180, 550);
+                if (this.WindowState == FormWindowState.Normal)
+                    this.ClientSize = new Size(1164, 512);
+
+                tabMain.Height = this.ClientSize.Height - 115 - 12;
+                int cardHeight = tabWorkOrder.ClientSize.Height - 20;
+                grpOrderInfo.Height = cardHeight;
+                grpTrackedInList.Height = cardHeight;
+
+                grpOrderInfo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+                grpTrackedInList.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+
+                btnRoleSwitch.Text = _isEnglish ? "OP Mode" : "OP 模式";
+                btnRoleSwitch.BackColor = Color.WhiteSmoke;
+                btnRoleSwitch.ForeColor = Color.DimGray;
+                this.Text = "MES - 2026/09/16 [OP 作業介面]";
+            }
+        }
+
+        /// <summary>
+        /// 動態調整工單分頁比例：放大「工單訊息」避免 125% DPI 切字，並縮小「已進站工單清單」寬度
+        /// </summary>
+        private void ApplyResponsiveWorkOrderLayout()
+        {
+            if (tabWorkOrder == null || grpOrderInfo == null || grpTrackedInList == null) return;
+
+            int bottomMargin = _isEngineerMode ? 140 : 12;
+            tabMain.Height = Math.Max(385, this.ClientSize.Height - 115 - bottomMargin);
+
+            int pageWidth = tabWorkOrder.ClientSize.Width;
+            int pageHeight = tabWorkOrder.ClientSize.Height;
+
+            // 1. 右側「工單作業」固定在最右邊
+            int actionWidth = 175;
+            grpOrderActions.Width = actionWidth;
+            grpOrderActions.Left = pageWidth - actionWidth - 10;
+            grpOrderActions.Top = 10;
+
+            // 2. 分配剩餘寬度：紅色「工單訊息」佔 65%（足夠寬敞絕不切字），綠色「已進站清單」縮小為 35%
+            int availableWidth = grpOrderActions.Left - 30;
+            int orderInfoWidth = Math.Max(620, (int)(availableWidth * 0.65));
+            int trackedInWidth = Math.Max(300, availableWidth - orderInfoWidth - 10);
+
+            int cardHeight = _isEngineerMode ? 245 : Math.Max(330, pageHeight - 20);
+
+            // 設定紅色區 (grpOrderInfo)
+            grpOrderInfo.Location = new Point(10, 10);
+            grpOrderInfo.Size = new Size(orderInfoWidth, cardHeight);
+
+            // 設定綠色區 (grpTrackedInList) 縮小並緊跟在紅色區右側
+            grpTrackedInList.Location = new Point(grpOrderInfo.Right + 10, 10);
+            grpTrackedInList.Size = new Size(trackedInWidth, cardHeight);
+            btnRemoveTrackedIn.Top = grpTrackedInList.Height - 36;
+            btnRemoveTrackedIn.Left = grpTrackedInList.Width - btnRemoveTrackedIn.Width - 8;
+            dgvTrackedIn.Size = new Size(grpTrackedInList.Width - 12, btnRemoveTrackedIn.Top - 26);
+
+            // 3. 重新排列紅色區內部的 Label 與 TextBox，拉開間距解決 125% DPI 文字被切掉的問題
+            int padLeft = 15;
+            int col1InputX = 128; // 左欄標籤寬度給足 113px，確保「工單跑貨片數 :」完整不切字
+            int colGap = 20;
+            int halfWidth = (orderInfoWidth - padLeft * 2 - colGap) / 2;
+            int col1InputW = Math.Max(150, halfWidth - (col1InputX - padLeft));
+
+            int col2LabelX = padLeft + halfWidth + colGap;
+            int col2InputX = col2LabelX + 115; // 右欄標籤給足 115px，確保「ComponentNo :」完整不切字
+            int col2InputW = Math.Max(150, orderInfoWidth - padLeft - col2InputX);
+            int fullInputW = orderInfoWidth - padLeft - col1InputX;
+
+            // 垂直行距動態微調
+            int rowStart = 28;
+            int rowStep = _isEngineerMode ? 30 : Math.Min(42, (cardHeight - 35) / 7);
+
+            // 第 1 列：工單號碼 / BatchNo
+            lblWo.Location = new Point(padLeft, rowStart + 3);
+            txtWorkOrder.Location = new Point(col1InputX, rowStart);
+            txtWorkOrder.Width = col1InputW;
+            lblBatchNo.Location = new Point(col2LabelX, rowStart + 3);
+            txtBatchNo.Location = new Point(col2InputX, rowStart);
+            txtBatchNo.Width = col2InputW;
+
+            // 第 2 列：料號 / 製程編號
+            int r2 = rowStart + rowStep;
+            lblPartNo.Location = new Point(padLeft, r2 + 3);
+            txtPartNo.Location = new Point(col1InputX, r2);
+            txtPartNo.Width = col1InputW;
+            lblProcessNo.Location = new Point(col2LabelX, r2 + 3);
+            txtProcessNo.Location = new Point(col2InputX, r2);
+            txtProcessNo.Width = col2InputW;
+
+            // 第 3 列：製程名稱 (整行寬)
+            int r3 = rowStart + rowStep * 2;
+            lblProcessName.Location = new Point(padLeft, r3 + 3);
+            txtProcessName.Location = new Point(col1InputX, r3);
+            txtProcessName.Width = fullInputW;
+
+            // 第 4 列：工單數量 (整行寬)
+            int r4 = rowStart + rowStep * 3;
+            lblTotalQty.Location = new Point(padLeft, r4 + 3);
+            txtTotalQty.Location = new Point(col1InputX, r4);
+            txtTotalQty.Width = fullInputW;
+
+            // 第 5 列：工單跑貨片數 / 已完成片數
+            int r5 = rowStart + rowStep * 4;
+            lblRunQty.Location = new Point(padLeft, r5 + 3);
+            txtRunQty.Location = new Point(col1InputX, r5);
+            txtRunQty.Width = col1InputW;
+            lblCompletedQty.Location = new Point(col2LabelX, r5 + 3);
+            txtCompletedQty.Location = new Point(col2InputX, r5);
+            txtCompletedQty.Width = col2InputW;
+
+            // 第 6 列：RecipeID / 條件檔名
+            int r6 = rowStart + rowStep * 5;
+            lblRecipeId.Location = new Point(padLeft, r6 + 3);
+            txtRecipeId.Location = new Point(col1InputX, r6);
+            txtRecipeId.Width = col1InputW;
+            lblConditionFile.Location = new Point(col2LabelX, r6 + 3);
+            txtConditionFile.Location = new Point(col2InputX, r6);
+            txtConditionFile.Width = col2InputW;
+
+            // 第 7 列：是否已進站 / ComponentNo
+            int r7 = rowStart + rowStep * 6;
+            lblIsTrackedIn.Location = new Point(padLeft, r7 + 3);
+            txtIsTrackedIn.Location = new Point(col1InputX, r7);
+            txtIsTrackedIn.Width = col1InputW;
+            lblComponentNo.Location = new Point(col2LabelX, r7 + 3);
+            txtComponentNo.Location = new Point(col2InputX, r7);
+            txtComponentNo.Width = col2InputW;
+
+            // 4. 工程師模式 vs OP 模式的底部區域高度調整
+            if (_isEngineerMode)
+            {
+                int opcHeight = Math.Max(200, pageHeight - cardHeight - 25);
+                grpOpcStatus.Location = new Point(10, cardHeight + 15);
+                grpOpcStatus.Size = new Size(grpTrackedInList.Right - 10, opcHeight);
+                grpOrderActions.Height = Math.Max(340, pageHeight - 20);
+            }
+            else
+            {
+                grpOrderActions.Height = cardHeight;
+            }
+        }
+
+
+
     }
 }
