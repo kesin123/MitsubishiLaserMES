@@ -1053,7 +1053,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
             // 
             // btnTestAlive
             // 
-            btnTestAlive.Location = new Point(15, 20);
+            btnTestAlive.Location = new Point(15, 24);
             btnTestAlive.Name = "btnTestAlive";
             btnTestAlive.Size = new Size(185, 30);
             btnTestAlive.TabIndex = 0;
@@ -1062,7 +1062,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
             // 
             // btnTestProcessData
             // 
-            btnTestProcessData.Location = new Point(210, 20);
+            btnTestProcessData.Location = new Point(210, 24);
             btnTestProcessData.Name = "btnTestProcessData";
             btnTestProcessData.Size = new Size(155, 30);
             btnTestProcessData.TabIndex = 1;
@@ -1071,7 +1071,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
             // 
             // btnTestAlarmStart
             // 
-            btnTestAlarmStart.Location = new Point(375, 20);
+            btnTestAlarmStart.Location = new Point(375, 24);
             btnTestAlarmStart.Name = "btnTestAlarmStart";
             btnTestAlarmStart.Size = new Size(155, 30);
             btnTestAlarmStart.TabIndex = 2;
@@ -1080,7 +1080,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
             // 
             // btnTestAlarmEnd
             // 
-            btnTestAlarmEnd.Location = new Point(540, 20);
+            btnTestAlarmEnd.Location = new Point(540, 24);
             btnTestAlarmEnd.Name = "btnTestAlarmEnd";
             btnTestAlarmEnd.Size = new Size(155, 30);
             btnTestAlarmEnd.TabIndex = 3;
@@ -1089,7 +1089,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
             // 
             // btnClearLogs
             // 
-            btnClearLogs.Location = new Point(705, 20);
+            btnClearLogs.Location = new Point(705, 24);
             btnClearLogs.Name = "btnClearLogs";
             btnClearLogs.Size = new Size(115, 30);
             btnClearLogs.TabIndex = 4;
@@ -1131,7 +1131,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
             // 
             btnTriggerHandshakeNow.BackColor = Color.LightSkyBlue;
             btnTriggerHandshakeNow.Font = new Font("微軟正黑體", 9F, FontStyle.Bold);
-            btnTriggerHandshakeNow.Location = new Point(470, 18);
+            btnTriggerHandshakeNow.Location = new Point(563, 20);
             btnTriggerHandshakeNow.Name = "btnTriggerHandshakeNow";
             btnTriggerHandshakeNow.Size = new Size(165, 28);
             btnTriggerHandshakeNow.TabIndex = 1;
@@ -1140,7 +1140,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
             // 
             // btnClearTestRecipe
             // 
-            btnClearTestRecipe.Location = new Point(645, 18);
+            btnClearTestRecipe.Location = new Point(734, 20);
             btnClearTestRecipe.Name = "btnClearTestRecipe";
             btnClearTestRecipe.Size = new Size(85, 28);
             btnClearTestRecipe.TabIndex = 2;
@@ -1152,7 +1152,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
             lblTestHandshakeStatus.AutoSize = true;
             lblTestHandshakeStatus.Font = new Font("微軟正黑體", 9F, FontStyle.Bold);
             lblTestHandshakeStatus.ForeColor = Color.DarkSlateBlue;
-            lblTestHandshakeStatus.Location = new Point(745, 24);
+            lblTestHandshakeStatus.Location = new Point(834, 25);
             lblTestHandshakeStatus.Name = "lblTestHandshakeStatus";
             lblTestHandshakeStatus.Size = new Size(199, 19);
             lblTestHandshakeStatus.TabIndex = 3;
@@ -1169,7 +1169,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
             // 
             // txtTestPrg
             // 
-            txtTestPrg.Location = new Point(115, 54);
+            txtTestPrg.Location = new Point(129, 52);
             txtTestPrg.Name = "txtTestPrg";
             txtTestPrg.Size = new Size(260, 27);
             txtTestPrg.TabIndex = 5;
@@ -1177,7 +1177,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
             // 
             // btnBrowseTestPrg
             // 
-            btnBrowseTestPrg.Location = new Point(380, 52);
+            btnBrowseTestPrg.Location = new Point(395, 52);
             btnBrowseTestPrg.Name = "btnBrowseTestPrg";
             btnBrowseTestPrg.Size = new Size(65, 27);
             btnBrowseTestPrg.TabIndex = 6;
@@ -1187,7 +1187,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
             // lblTestCnd
             // 
             lblTestCnd.AutoSize = true;
-            lblTestCnd.Location = new Point(460, 57);
+            lblTestCnd.Location = new Point(474, 57);
             lblTestCnd.Name = "lblTestCnd";
             lblTestCnd.Size = new Size(87, 19);
             lblTestCnd.TabIndex = 7;
@@ -1195,7 +1195,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
             // 
             // txtTestCnd
             // 
-            txtTestCnd.Location = new Point(540, 54);
+            txtTestCnd.Location = new Point(567, 52);
             txtTestCnd.Name = "txtTestCnd";
             txtTestCnd.Size = new Size(120, 27);
             txtTestCnd.TabIndex = 8;
@@ -1204,7 +1204,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
             // lblTestSheet
             // 
             lblTestSheet.AutoSize = true;
-            lblTestSheet.Location = new Point(680, 57);
+            lblTestSheet.Location = new Point(717, 57);
             lblTestSheet.Name = "lblTestSheet";
             lblTestSheet.Size = new Size(72, 19);
             lblTestSheet.TabIndex = 9;
@@ -1212,7 +1212,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
             // 
             // nudTestSheet
             // 
-            nudTestSheet.Location = new Point(748, 54);
+            nudTestSheet.Location = new Point(795, 52);
             nudTestSheet.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
             nudTestSheet.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             nudTestSheet.Name = "nudTestSheet";
@@ -1294,7 +1294,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
             // lblResult
             // 
             lblResult.AutoSize = true;
-            lblResult.Location = new Point(15, 25);
+            lblResult.Location = new Point(5, 25);
             lblResult.Name = "lblResult";
             lblResult.Size = new Size(59, 19);
             lblResult.TabIndex = 0;
@@ -1303,16 +1303,16 @@ namespace MitsubishiLaserMES.WinForms.Forms
             // txtResult
             // 
             txtResult.Font = new Font("微軟正黑體", 9.5F, FontStyle.Bold);
-            txtResult.Location = new Point(75, 22);
+            txtResult.Location = new Point(65, 22);
             txtResult.Name = "txtResult";
             txtResult.ReadOnly = true;
-            txtResult.Size = new Size(120, 29);
+            txtResult.Size = new Size(142, 29);
             txtResult.TabIndex = 1;
             // 
             // lblResultCode
             // 
             lblResultCode.AutoSize = true;
-            lblResultCode.Location = new Point(15, 58);
+            lblResultCode.Location = new Point(5, 58);
             lblResultCode.Name = "lblResultCode";
             lblResultCode.Size = new Size(96, 19);
             lblResultCode.TabIndex = 2;
@@ -1320,7 +1320,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
             // 
             // txtResultCode
             // 
-            txtResultCode.Location = new Point(95, 55);
+            txtResultCode.Location = new Point(107, 55);
             txtResultCode.Name = "txtResultCode";
             txtResultCode.ReadOnly = true;
             txtResultCode.Size = new Size(100, 27);
@@ -1329,7 +1329,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
             // lblResultMessage
             // 
             lblResultMessage.AutoSize = true;
-            lblResultMessage.Location = new Point(207, 25);
+            lblResultMessage.Location = new Point(213, 25);
             lblResultMessage.Name = "lblResultMessage";
             lblResultMessage.Size = new Size(121, 19);
             lblResultMessage.TabIndex = 4;
@@ -1339,12 +1339,12 @@ namespace MitsubishiLaserMES.WinForms.Forms
             // 
             txtResultMessage.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             txtResultMessage.BackColor = Color.WhiteSmoke;
-            txtResultMessage.Location = new Point(334, 22);
+            txtResultMessage.Location = new Point(340, 22);
             txtResultMessage.Multiline = true;
             txtResultMessage.Name = "txtResultMessage";
             txtResultMessage.ReadOnly = true;
             txtResultMessage.ScrollBars = ScrollBars.Vertical;
-            txtResultMessage.Size = new Size(791, 95);
+            txtResultMessage.Size = new Size(785, 95);
             txtResultMessage.TabIndex = 5;
             // 
             // MainForm

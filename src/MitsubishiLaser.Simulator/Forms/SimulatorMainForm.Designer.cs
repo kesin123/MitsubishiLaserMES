@@ -17,603 +17,694 @@ namespace MitsubishiLaser.Simulator.Forms
 
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-
-            // 頂部儀表看板
-            this.grpDashboard = new System.Windows.Forms.GroupBox();
-            this.pnlGreen = new System.Windows.Forms.Panel();
-            this.lblGreen = new System.Windows.Forms.Label();
-            this.pnlYellow = new System.Windows.Forms.Panel();
-            this.lblYellow = new System.Windows.Forms.Label();
-            this.pnlRed = new System.Windows.Forms.Panel();
-            this.lblRed = new System.Windows.Forms.Label();
-            this.lblStatusBadge = new System.Windows.Forms.Label();
-            this.lblModeBadge = new System.Windows.Forms.Label();
-            this.lblWatchDogVal = new System.Windows.Forms.Label();
-            this.pbWatchDog = new System.Windows.Forms.ProgressBar();
-            this.lblWatchDogTitle = new System.Windows.Forms.Label();
-            this.chkWatchDogEnable = new System.Windows.Forms.CheckBox();
-            this.btnFeedDog = new System.Windows.Forms.Button();
-
-            // 配方交握區
-            this.grpRecipe = new System.Windows.Forms.GroupBox();
-            this.lblLotInput = new System.Windows.Forms.Label();
-            this.txtLotInput = new System.Windows.Forms.TextBox();
-            this.btnInputLot = new System.Windows.Forms.Button();
-            this.btnTriggerGetRecipeReq = new System.Windows.Forms.Button();
-            this.lblGetRecipeReq = new System.Windows.Forms.Label();
-            this.lblReqPrg = new System.Windows.Forms.Label();
-            this.txtReqPrg = new System.Windows.Forms.TextBox();
-            this.lblReqCnd = new System.Windows.Forms.Label();
-            this.txtReqCnd = new System.Windows.Forms.TextBox();
-            this.lblReqSheet = new System.Windows.Forms.Label();
-            this.txtReqSheet = new System.Windows.Forms.TextBox();
-            this.lblGetRecipeAck = new System.Windows.Forms.Label();
-            this.txtGetRecipeAck = new System.Windows.Forms.TextBox();
-
-            // 連續運轉與加工進度
-            this.grpSchedule = new System.Windows.Forms.GroupBox();
-            this.lblActivePrg = new System.Windows.Forms.Label();
-            this.lblActiveLot = new System.Windows.Forms.Label();
-            this.pbProcessing = new System.Windows.Forms.ProgressBar();
-            this.lblCounts = new System.Windows.Forms.Label();
-            this.lblLaserParams = new System.Windows.Forms.Label();
-            this.btnStartRun = new System.Windows.Forms.Button();
-            this.btnStopRun = new System.Windows.Forms.Button();
-            this.btnSimFailTarget = new System.Windows.Forms.Button();
-
-            // 模式控制
-            this.grpMode = new System.Windows.Forms.GroupBox();
-            this.btnSetOffline = new System.Windows.Forms.Button();
-            this.btnSetLocal = new System.Windows.Forms.Button();
-            this.btnSetSemiAuto = new System.Windows.Forms.Button();
-            this.btnSetAuto = new System.Windows.Forms.Button();
-
-            // 警報控制與列表
-            this.grpAlarm = new System.Windows.Forms.GroupBox();
-            this.cboPresetAlarms = new System.Windows.Forms.ComboBox();
-            this.lblPreset = new System.Windows.Forms.Label();
-            this.txtCustomAlarmNo = new System.Windows.Forms.TextBox();
-            this.txtCustomAlarmMsg = new System.Windows.Forms.TextBox();
-            this.btnTriggerAlarm = new System.Windows.Forms.Button();
-            this.btnAlReset = new System.Windows.Forms.Button();
-            this.dgvAlarms = new System.Windows.Forms.DataGridView();
-            this.colSlot = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAlarmNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAlarmMsg = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAlarmType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTriggerTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-
-            // 日誌
-            this.grpLog = new System.Windows.Forms.GroupBox();
-            this.txtLog = new System.Windows.Forms.TextBox();
-            this.btnClearLog = new System.Windows.Forms.Button();
-
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAlarms)).BeginInit();
-            this.grpDashboard.SuspendLayout();
-            this.grpRecipe.SuspendLayout();
-            this.grpSchedule.SuspendLayout();
-            this.grpMode.SuspendLayout();
-            this.grpAlarm.SuspendLayout();
-            this.grpLog.SuspendLayout();
-            this.SuspendLayout();
-
-            // ================= grpDashboard =================
-            this.grpDashboard.Controls.Add(this.pnlGreen);
-            this.grpDashboard.Controls.Add(this.lblGreen);
-            this.grpDashboard.Controls.Add(this.pnlYellow);
-            this.grpDashboard.Controls.Add(this.lblYellow);
-            this.grpDashboard.Controls.Add(this.pnlRed);
-            this.grpDashboard.Controls.Add(this.lblRed);
-            this.grpDashboard.Controls.Add(this.lblStatusBadge);
-            this.grpDashboard.Controls.Add(this.lblModeBadge);
-            this.grpDashboard.Controls.Add(this.lblWatchDogTitle);
-            this.grpDashboard.Controls.Add(this.chkWatchDogEnable);
-            this.grpDashboard.Controls.Add(this.btnFeedDog);
-            this.grpDashboard.Controls.Add(this.pbWatchDog);
-            this.grpDashboard.Controls.Add(this.lblWatchDogVal);
-            this.grpDashboard.Location = new System.Drawing.Point(12, 10);
-            this.grpDashboard.Name = "grpDashboard";
-            this.grpDashboard.Size = new System.Drawing.Size(1140, 95);
-            this.grpDashboard.TabIndex = 0;
-            this.grpDashboard.TabStop = false;
-            this.grpDashboard.Text = "機台即時狀態看板 (Dashboard)";
-
-            // 綠燈
-            this.pnlGreen.BackColor = System.Drawing.Color.DarkGreen;
-            this.pnlGreen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlGreen.Location = new System.Drawing.Point(20, 30);
-            this.pnlGreen.Name = "pnlGreen";
-            this.pnlGreen.Size = new System.Drawing.Size(26, 26);
-            this.pnlGreen.TabIndex = 0;
-
-            this.lblGreen.AutoSize = true;
-            this.lblGreen.Location = new System.Drawing.Point(52, 35);
-            this.lblGreen.Name = "lblGreen";
-            this.lblGreen.Size = new System.Drawing.Size(56, 17);
-            this.lblGreen.TabIndex = 1;
-            this.lblGreen.Text = "綠燈 (Run)";
-
-            // 黃燈
-            this.pnlYellow.BackColor = System.Drawing.Color.DarkGoldenrod;
-            this.pnlYellow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlYellow.Location = new System.Drawing.Point(135, 30);
-            this.pnlYellow.Name = "pnlYellow";
-            this.pnlYellow.Size = new System.Drawing.Size(26, 26);
-            this.pnlYellow.TabIndex = 2;
-
-            this.lblYellow.AutoSize = true;
-            this.lblYellow.Location = new System.Drawing.Point(167, 35);
-            this.lblYellow.Name = "lblYellow";
-            this.lblYellow.Size = new System.Drawing.Size(68, 17);
-            this.lblYellow.TabIndex = 3;
-            this.lblYellow.Text = "黃燈 (Beam)";
-
-            // 紅燈
-            this.pnlRed.BackColor = System.Drawing.Color.DarkRed;
-            this.pnlRed.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlRed.Location = new System.Drawing.Point(255, 30);
-            this.pnlRed.Name = "pnlRed";
-            this.pnlRed.Size = new System.Drawing.Size(26, 26);
-            this.pnlRed.TabIndex = 4;
-
-            this.lblRed.AutoSize = true;
-            this.lblRed.Location = new System.Drawing.Point(287, 35);
-            this.lblRed.Name = "lblRed";
-            this.lblRed.Size = new System.Drawing.Size(69, 17);
-            this.lblRed.TabIndex = 5;
-            this.lblRed.Text = "紅燈 (Alarm)";
-
-            // 機台狀態 Badge
-            this.lblStatusBadge.BackColor = System.Drawing.Color.Gold;
-            this.lblStatusBadge.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblStatusBadge.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold);
-            this.lblStatusBadge.Location = new System.Drawing.Point(380, 24);
-            this.lblStatusBadge.Name = "lblStatusBadge";
-            this.lblStatusBadge.Size = new System.Drawing.Size(180, 42);
-            this.lblStatusBadge.TabIndex = 6;
-            this.lblStatusBadge.Text = "[3] Idle (待機)";
-            this.lblStatusBadge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-
-            // 模式 Badge
-            this.lblModeBadge.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.lblModeBadge.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblModeBadge.Font = new System.Drawing.Font("微軟正黑體", 11F, System.Drawing.FontStyle.Bold);
-            this.lblModeBadge.Location = new System.Drawing.Point(575, 24);
-            this.lblModeBadge.Name = "lblModeBadge";
-            this.lblModeBadge.Size = new System.Drawing.Size(160, 42);
-            this.lblModeBadge.TabIndex = 7;
-            this.lblModeBadge.Text = "Mode: Online-Auto";
-            this.lblModeBadge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-
-            // WatchDog
-            this.lblWatchDogTitle.AutoSize = true;
-            this.lblWatchDogTitle.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold);
-            this.lblWatchDogTitle.Location = new System.Drawing.Point(680, 22);
-            this.lblWatchDogTitle.Name = "lblWatchDogTitle";
-            this.lblWatchDogTitle.Size = new System.Drawing.Size(145, 16);
-            this.lblWatchDogTitle.TabIndex = 8;
-            this.lblWatchDogTitle.Text = "Host WatchDog 心跳監控:";
-
-            this.chkWatchDogEnable.AutoSize = true;
-            this.chkWatchDogEnable.Checked = true;
-            this.chkWatchDogEnable.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkWatchDogEnable.Font = new System.Drawing.Font("微軟正黑體", 9F);
-            this.chkWatchDogEnable.Location = new System.Drawing.Point(830, 20);
-            this.chkWatchDogEnable.Name = "chkWatchDogEnable";
-            this.chkWatchDogEnable.Size = new System.Drawing.Size(75, 20);
-            this.chkWatchDogEnable.TabIndex = 9;
-            this.chkWatchDogEnable.Text = "啟用監控";
-            this.chkWatchDogEnable.UseVisualStyleBackColor = true;
-
-            this.btnFeedDog.Font = new System.Drawing.Font("微軟正黑體", 8.5F);
-            this.btnFeedDog.Location = new System.Drawing.Point(910, 17);
-            this.btnFeedDog.Name = "btnFeedDog";
-            this.btnFeedDog.Size = new System.Drawing.Size(95, 25);
-            this.btnFeedDog.TabIndex = 10;
-            this.btnFeedDog.Text = "手動餵狗 (+1)";
-            this.btnFeedDog.UseVisualStyleBackColor = true;
-
-            this.pbWatchDog.Location = new System.Drawing.Point(683, 45);
-            this.pbWatchDog.Maximum = 10;
-            this.pbWatchDog.Name = "pbWatchDog";
-            this.pbWatchDog.Size = new System.Drawing.Size(220, 20);
-            this.pbWatchDog.TabIndex = 11;
-            this.pbWatchDog.Value = 10;
-
-            this.lblWatchDogVal.AutoSize = true;
-            this.lblWatchDogVal.Font = new System.Drawing.Font("Arial", 9.5F, System.Drawing.FontStyle.Bold);
-            this.lblWatchDogVal.Location = new System.Drawing.Point(910, 47);
-            this.lblWatchDogVal.Name = "lblWatchDogVal";
-            this.lblWatchDogVal.Size = new System.Drawing.Size(220, 16);
-            this.lblWatchDogVal.TabIndex = 12;
-            this.lblWatchDogVal.Text = "10s [待命中 (等待上位機連線...)]";
-
-            // ================= grpRecipe =================
-            this.grpRecipe.Controls.Add(this.lblLotInput);
-            this.grpRecipe.Controls.Add(this.txtLotInput);
-            this.grpRecipe.Controls.Add(this.btnInputLot);
-            this.grpRecipe.Controls.Add(this.btnTriggerGetRecipeReq);
-            this.grpRecipe.Controls.Add(this.lblGetRecipeReq);
-            this.grpRecipe.Controls.Add(this.lblReqPrg);
-            this.grpRecipe.Controls.Add(this.txtReqPrg);
-            this.grpRecipe.Controls.Add(this.lblReqCnd);
-            this.grpRecipe.Controls.Add(this.txtReqCnd);
-            this.grpRecipe.Controls.Add(this.lblReqSheet);
-            this.grpRecipe.Controls.Add(this.txtReqSheet);
-            this.grpRecipe.Controls.Add(this.lblGetRecipeAck);
-            this.grpRecipe.Controls.Add(this.txtGetRecipeAck);
-            this.grpRecipe.Location = new System.Drawing.Point(12, 115);
-            this.grpRecipe.Name = "grpRecipe";
-            this.grpRecipe.Size = new System.Drawing.Size(560, 230);
-            this.grpRecipe.TabIndex = 1;
-            this.grpRecipe.TabStop = false;
-            this.grpRecipe.Text = "操作員條碼輸入與配方交握 (Recipe Handshake SPEC 4-4)";
-
-            this.lblLotInput.AutoSize = true;
-            this.lblLotInput.Location = new System.Drawing.Point(15, 30);
-            this.lblLotInput.Name = "lblLotInput";
-            this.lblLotInput.Size = new System.Drawing.Size(71, 17);
-            this.lblLotInput.TabIndex = 0;
-            this.lblLotInput.Text = "批號 (LotID):";
-
-            this.txtLotInput.Location = new System.Drawing.Point(95, 26);
-            this.txtLotInput.Name = "txtLotInput";
-            this.txtLotInput.Size = new System.Drawing.Size(140, 23);
-            this.txtLotInput.TabIndex = 1;
-            this.txtLotInput.Text = "LOT20260916-01";
-
-            this.btnInputLot.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnInputLot.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold);
-            this.btnInputLot.Location = new System.Drawing.Point(245, 23);
-            this.btnInputLot.Name = "btnInputLot";
-            this.btnInputLot.Size = new System.Drawing.Size(140, 29);
-            this.btnInputLot.TabIndex = 2;
-            this.btnInputLot.Text = "模擬操作員刷入";
-            this.btnInputLot.UseVisualStyleBackColor = false;
-
-            this.btnTriggerGetRecipeReq.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.btnTriggerGetRecipeReq.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold);
-            this.btnTriggerGetRecipeReq.Location = new System.Drawing.Point(395, 23);
-            this.btnTriggerGetRecipeReq.Name = "btnTriggerGetRecipeReq";
-            this.btnTriggerGetRecipeReq.Size = new System.Drawing.Size(145, 29);
-            this.btnTriggerGetRecipeReq.TabIndex = 3;
-            this.btnTriggerGetRecipeReq.Text = "發出 GetRecipe.Req";
-            this.btnTriggerGetRecipeReq.UseVisualStyleBackColor = false;
-
-            this.lblGetRecipeReq.AutoSize = true;
-            this.lblGetRecipeReq.Font = new System.Drawing.Font("微軟正黑體", 9.5F, System.Drawing.FontStyle.Bold);
-            this.lblGetRecipeReq.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.lblGetRecipeReq.Location = new System.Drawing.Point(15, 68);
-            this.lblGetRecipeReq.Name = "lblGetRecipeReq";
-            this.lblGetRecipeReq.Size = new System.Drawing.Size(211, 17);
-            this.lblGetRecipeReq.TabIndex = 3;
-            this.lblGetRecipeReq.Text = "GetRecipe.Req: False (等待刷卡中)";
-
-            this.lblReqPrg.AutoSize = true;
-            this.lblReqPrg.Location = new System.Drawing.Point(15, 105);
-            this.lblReqPrg.Name = "lblReqPrg";
-            this.lblReqPrg.Size = new System.Drawing.Size(89, 17);
-            this.lblReqPrg.TabIndex = 4;
-            this.lblReqPrg.Text = "ProgramFile :";
-
-            this.txtReqPrg.Location = new System.Drawing.Point(115, 102);
-            this.txtReqPrg.Name = "txtReqPrg";
-            this.txtReqPrg.ReadOnly = true;
-            this.txtReqPrg.Size = new System.Drawing.Size(425, 23);
-            this.txtReqPrg.TabIndex = 5;
-
-            this.lblReqCnd.AutoSize = true;
-            this.lblReqCnd.Location = new System.Drawing.Point(15, 140);
-            this.lblReqCnd.Name = "lblReqCnd";
-            this.lblReqCnd.Size = new System.Drawing.Size(91, 17);
-            this.lblReqCnd.TabIndex = 6;
-            this.lblReqCnd.Text = "ConditionFile :";
-
-            this.txtReqCnd.Location = new System.Drawing.Point(115, 137);
-            this.txtReqCnd.Name = "txtReqCnd";
-            this.txtReqCnd.ReadOnly = true;
-            this.txtReqCnd.Size = new System.Drawing.Size(425, 23);
-            this.txtReqCnd.TabIndex = 7;
-
-            this.lblReqSheet.AutoSize = true;
-            this.lblReqSheet.Location = new System.Drawing.Point(15, 175);
-            this.lblReqSheet.Name = "lblReqSheet";
-            this.lblReqSheet.Size = new System.Drawing.Size(71, 17);
-            this.lblReqSheet.TabIndex = 8;
-            this.lblReqSheet.Text = "SheetNum :";
-
-            this.txtReqSheet.Location = new System.Drawing.Point(115, 172);
-            this.txtReqSheet.Name = "txtReqSheet";
-            this.txtReqSheet.ReadOnly = true;
-            this.txtReqSheet.Size = new System.Drawing.Size(120, 23);
-            this.txtReqSheet.TabIndex = 9;
-
-            this.lblGetRecipeAck.AutoSize = true;
-            this.lblGetRecipeAck.Location = new System.Drawing.Point(280, 175);
-            this.lblGetRecipeAck.Name = "lblGetRecipeAck";
-            this.lblGetRecipeAck.Size = new System.Drawing.Size(97, 17);
-            this.lblGetRecipeAck.TabIndex = 10;
-            this.lblGetRecipeAck.Text = "GetRecipe.Ack :";
-
-            this.txtGetRecipeAck.Location = new System.Drawing.Point(385, 172);
-            this.txtGetRecipeAck.Name = "txtGetRecipeAck";
-            this.txtGetRecipeAck.ReadOnly = true;
-            this.txtGetRecipeAck.Size = new System.Drawing.Size(155, 23);
-            this.txtGetRecipeAck.TabIndex = 11;
-
-            // ================= grpSchedule =================
-            this.grpSchedule.Controls.Add(this.lblActivePrg);
-            this.grpSchedule.Controls.Add(this.lblActiveLot);
-            this.grpSchedule.Controls.Add(this.pbProcessing);
-            this.grpSchedule.Controls.Add(this.lblCounts);
-            this.grpSchedule.Controls.Add(this.lblLaserParams);
-            this.grpSchedule.Controls.Add(this.btnStartRun);
-            this.grpSchedule.Controls.Add(this.btnStopRun);
-            this.grpSchedule.Controls.Add(this.btnSimFailTarget);
-            this.grpSchedule.Location = new System.Drawing.Point(590, 115);
-            this.grpSchedule.Name = "grpSchedule";
-            this.grpSchedule.Size = new System.Drawing.Size(562, 230);
-            this.grpSchedule.TabIndex = 2;
-            this.grpSchedule.TabStop = false;
-            this.grpSchedule.Text = "連續運轉與加工監控 (Schedule & Progress SPEC 4-5)";
-
-            this.lblActivePrg.AutoSize = true;
-            this.lblActivePrg.Font = new System.Drawing.Font("微軟正黑體", 9.5F, System.Drawing.FontStyle.Bold);
-            this.lblActivePrg.Location = new System.Drawing.Point(15, 28);
-            this.lblActivePrg.Name = "lblActivePrg";
-            this.lblActivePrg.Size = new System.Drawing.Size(161, 17);
-            this.lblActivePrg.TabIndex = 0;
-            this.lblActivePrg.Text = "當前加工程式: (尚未載入)";
-
-            this.lblActiveLot.AutoSize = true;
-            this.lblActiveLot.Location = new System.Drawing.Point(15, 55);
-            this.lblActiveLot.Name = "lblActiveLot";
-            this.lblActiveLot.Size = new System.Drawing.Size(95, 17);
-            this.lblActiveLot.TabIndex = 1;
-            this.lblActiveLot.Text = "作用批號: (None)";
-
-            this.pbProcessing.Location = new System.Drawing.Point(18, 85);
-            this.pbProcessing.Name = "pbProcessing";
-            this.pbProcessing.Size = new System.Drawing.Size(525, 22);
-            this.pbProcessing.TabIndex = 2;
-
-            this.lblCounts.AutoSize = true;
-            this.lblCounts.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold);
-            this.lblCounts.Location = new System.Drawing.Point(15, 120);
-            this.lblCounts.Name = "lblCounts";
-            this.lblCounts.Size = new System.Drawing.Size(325, 18);
-            this.lblCounts.TabIndex = 3;
-            this.lblCounts.Text = "加工進度: Processed=0 / Scheduled=0 (失敗=0)";
-
-            this.lblLaserParams.AutoSize = true;
-            this.lblLaserParams.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.lblLaserParams.Location = new System.Drawing.Point(15, 150);
-            this.lblLaserParams.Name = "lblLaserParams";
-            this.lblLaserParams.Size = new System.Drawing.Size(434, 17);
-            this.lblLaserParams.TabIndex = 4;
-            this.lblLaserParams.Text = "雷射功率: 5500W | 頻率: 100Hz | 氣壓: -10.5kPa | 聚焦鏡溫度: 24.2℃";
-
-            this.btnStartRun.BackColor = System.Drawing.Color.LightGreen;
-            this.btnStartRun.Font = new System.Drawing.Font("微軟正黑體", 9.5F, System.Drawing.FontStyle.Bold);
-            this.btnStartRun.Location = new System.Drawing.Point(18, 180);
-            this.btnStartRun.Name = "btnStartRun";
-            this.btnStartRun.Size = new System.Drawing.Size(160, 36);
-            this.btnStartRun.TabIndex = 5;
-            this.btnStartRun.Text = "手動啟動連續運轉";
-            this.btnStartRun.UseVisualStyleBackColor = false;
-
-            this.btnStopRun.BackColor = System.Drawing.Color.MistyRose;
-            this.btnStopRun.Font = new System.Drawing.Font("微軟正黑體", 9.5F);
-            this.btnStopRun.Location = new System.Drawing.Point(190, 180);
-            this.btnStopRun.Name = "btnStopRun";
-            this.btnStopRun.Size = new System.Drawing.Size(120, 36);
-            this.btnStopRun.TabIndex = 6;
-            this.btnStopRun.Text = "暫停/停止運轉";
-            this.btnStopRun.UseVisualStyleBackColor = false;
-
-            this.btnSimFailTarget.Location = new System.Drawing.Point(325, 180);
-            this.btnSimFailTarget.Name = "btnSimFailTarget";
-            this.btnSimFailTarget.Size = new System.Drawing.Size(150, 36);
-            this.btnSimFailTarget.TabIndex = 7;
-            this.btnSimFailTarget.Text = "模擬靶位抓取失敗";
-            this.btnSimFailTarget.UseVisualStyleBackColor = true;
-
-            // ================= grpMode =================
-            this.grpMode.Controls.Add(this.btnSetOffline);
-            this.grpMode.Controls.Add(this.btnSetLocal);
-            this.grpMode.Controls.Add(this.btnSetSemiAuto);
-            this.grpMode.Controls.Add(this.btnSetAuto);
-            this.grpMode.Location = new System.Drawing.Point(12, 355);
-            this.grpMode.Name = "grpMode";
-            this.grpMode.Size = new System.Drawing.Size(560, 75);
-            this.grpMode.TabIndex = 3;
-            this.grpMode.TabStop = false;
-            this.grpMode.Text = "機台操作盤模式切換 (SPEC 4-1，機台端手動切換)";
-
-            this.btnSetOffline.Location = new System.Drawing.Point(20, 25);
-            this.btnSetOffline.Name = "btnSetOffline";
-            this.btnSetOffline.Size = new System.Drawing.Size(115, 34);
-            this.btnSetOffline.TabIndex = 0;
-            this.btnSetOffline.Text = "0: OFFLINE";
-            this.btnSetOffline.UseVisualStyleBackColor = true;
-
-            this.btnSetLocal.Location = new System.Drawing.Point(150, 25);
-            this.btnSetLocal.Name = "btnSetLocal";
-            this.btnSetLocal.Size = new System.Drawing.Size(115, 34);
-            this.btnSetLocal.TabIndex = 1;
-            this.btnSetLocal.Text = "1: LOCAL";
-            this.btnSetLocal.UseVisualStyleBackColor = true;
-
-            this.btnSetSemiAuto.Location = new System.Drawing.Point(280, 25);
-            this.btnSetSemiAuto.Name = "btnSetSemiAuto";
-            this.btnSetSemiAuto.Size = new System.Drawing.Size(125, 34);
-            this.btnSetSemiAuto.TabIndex = 2;
-            this.btnSetSemiAuto.Text = "2: SEMI-AUTO";
-            this.btnSetSemiAuto.UseVisualStyleBackColor = true;
-
-            this.btnSetAuto.BackColor = System.Drawing.Color.LightCyan;
-            this.btnSetAuto.Location = new System.Drawing.Point(420, 25);
-            this.btnSetAuto.Name = "btnSetAuto";
-            this.btnSetAuto.Size = new System.Drawing.Size(120, 34);
-            this.btnSetAuto.TabIndex = 3;
-            this.btnSetAuto.Text = "3: AUTO";
-            this.btnSetAuto.UseVisualStyleBackColor = false;
-
-            // ================= grpAlarm =================
-            this.grpAlarm.Controls.Add(this.lblPreset);
-            this.grpAlarm.Controls.Add(this.cboPresetAlarms);
-            this.grpAlarm.Controls.Add(this.txtCustomAlarmNo);
-            this.grpAlarm.Controls.Add(this.txtCustomAlarmMsg);
-            this.grpAlarm.Controls.Add(this.btnTriggerAlarm);
-            this.grpAlarm.Controls.Add(this.btnAlReset);
-            this.grpAlarm.Controls.Add(this.dgvAlarms);
-            this.grpAlarm.Location = new System.Drawing.Point(12, 440);
-            this.grpAlarm.Name = "grpAlarm";
-            this.grpAlarm.Size = new System.Drawing.Size(560, 320);
-            this.grpAlarm.TabIndex = 4;
-            this.grpAlarm.TabStop = false;
-            this.grpAlarm.Text = "警報注入與 AL-RESET 復歸 (SPEC 4-7，10 組 Alarm Slot)";
-
-            this.lblPreset.AutoSize = true;
-            this.lblPreset.Location = new System.Drawing.Point(15, 28);
-            this.lblPreset.Name = "lblPreset";
-            this.lblPreset.Size = new System.Drawing.Size(59, 17);
-            this.lblPreset.TabIndex = 0;
-            this.lblPreset.Text = "預置警報:";
-
-            this.cboPresetAlarms.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboPresetAlarms.FormattingEnabled = true;
-            this.cboPresetAlarms.Location = new System.Drawing.Point(80, 25);
-            this.cboPresetAlarms.Name = "cboPresetAlarms";
-            this.cboPresetAlarms.Size = new System.Drawing.Size(250, 25);
-            this.cboPresetAlarms.TabIndex = 1;
-
-            this.txtCustomAlarmNo.Location = new System.Drawing.Point(340, 25);
-            this.txtCustomAlarmNo.Name = "txtCustomAlarmNo";
-            this.txtCustomAlarmNo.Size = new System.Drawing.Size(60, 23);
-            this.txtCustomAlarmNo.TabIndex = 2;
-            this.txtCustomAlarmNo.Text = "0216";
-
-            this.txtCustomAlarmMsg.Location = new System.Drawing.Point(405, 25);
-            this.txtCustomAlarmMsg.Name = "txtCustomAlarmMsg";
-            this.txtCustomAlarmMsg.Size = new System.Drawing.Size(140, 23);
-            this.txtCustomAlarmMsg.TabIndex = 3;
-            this.txtCustomAlarmMsg.Text = "工件偏移異常";
-
-            this.btnTriggerAlarm.BackColor = System.Drawing.Color.LightCoral;
-            this.btnTriggerAlarm.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold);
-            this.btnTriggerAlarm.Location = new System.Drawing.Point(15, 60);
-            this.btnTriggerAlarm.Name = "btnTriggerAlarm";
-            this.btnTriggerAlarm.Size = new System.Drawing.Size(160, 32);
-            this.btnTriggerAlarm.TabIndex = 4;
-            this.btnTriggerAlarm.Text = "注入警報 (Trigger)";
-            this.btnTriggerAlarm.UseVisualStyleBackColor = false;
-
-            this.btnAlReset.BackColor = System.Drawing.Color.LightYellow;
-            this.btnAlReset.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold);
-            this.btnAlReset.Location = new System.Drawing.Point(190, 60);
-            this.btnAlReset.Name = "btnAlReset";
-            this.btnAlReset.Size = new System.Drawing.Size(190, 32);
-            this.btnAlReset.TabIndex = 5;
-            this.btnAlReset.Text = "機台 AL-RESET (警報復歸)";
-            this.btnAlReset.UseVisualStyleBackColor = false;
-
-            this.dgvAlarms.AllowUserToAddRows = false;
-            this.dgvAlarms.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvAlarms.BackgroundColor = System.Drawing.Color.White;
-            this.dgvAlarms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAlarms.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-                this.colSlot,
-                this.colAlarmNo,
-                this.colAlarmMsg,
-                this.colAlarmType,
-                this.colTriggerTime});
-            this.dgvAlarms.Location = new System.Drawing.Point(15, 100);
-            this.dgvAlarms.Name = "dgvAlarms";
-            this.dgvAlarms.ReadOnly = true;
-            this.dgvAlarms.RowTemplate.Height = 25;
-            this.dgvAlarms.Size = new System.Drawing.Size(530, 205);
-            this.dgvAlarms.TabIndex = 6;
-
-            this.colSlot.HeaderText = "Slot";
-            this.colSlot.Name = "colSlot";
-            this.colSlot.ReadOnly = true;
-
-            this.colAlarmNo.HeaderText = "代碼";
-            this.colAlarmNo.Name = "colAlarmNo";
-            this.colAlarmNo.ReadOnly = true;
-
-            this.colAlarmMsg.HeaderText = "警報訊息";
-            this.colAlarmMsg.Name = "colAlarmMsg";
-            this.colAlarmMsg.ReadOnly = true;
-
-            this.colAlarmType.HeaderText = "等級";
-            this.colAlarmType.Name = "colAlarmType";
-            this.colAlarmType.ReadOnly = true;
-
-            this.colTriggerTime.HeaderText = "發生時間";
-            this.colTriggerTime.Name = "colTriggerTime";
-            this.colTriggerTime.ReadOnly = true;
-
-            // ================= grpLog =================
-            this.grpLog.Controls.Add(this.txtLog);
-            this.grpLog.Controls.Add(this.btnClearLog);
-            this.grpLog.Location = new System.Drawing.Point(590, 355);
-            this.grpLog.Name = "grpLog";
-            this.grpLog.Size = new System.Drawing.Size(562, 405);
-            this.grpLog.TabIndex = 5;
-            this.grpLog.TabStop = false;
-            this.grpLog.Text = "機台事件與通訊日誌 (Event Log)";
-
-            this.txtLog.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtLog.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtLog.Font = new System.Drawing.Font("Consolas", 9F);
-            this.txtLog.Location = new System.Drawing.Point(3, 19);
-            this.txtLog.Multiline = true;
-            this.txtLog.Name = "txtLog";
-            this.txtLog.ReadOnly = true;
-            this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtLog.Size = new System.Drawing.Size(556, 345);
-            this.txtLog.TabIndex = 0;
-
-            this.btnClearLog.Location = new System.Drawing.Point(440, 368);
-            this.btnClearLog.Name = "btnClearLog";
-            this.btnClearLog.Size = new System.Drawing.Size(110, 30);
-            this.btnClearLog.TabIndex = 1;
-            this.btnClearLog.Text = "清空日誌";
-            this.btnClearLog.UseVisualStyleBackColor = true;
-
-            // ================= 根表單配置 =================
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1164, 771);
-            this.Controls.Add(this.grpDashboard);
-            this.Controls.Add(this.grpRecipe);
-            this.Controls.Add(this.grpSchedule);
-            this.Controls.Add(this.grpMode);
-            this.Controls.Add(this.grpAlarm);
-            this.Controls.Add(this.grpLog);
-            this.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.Name = "SimulatorMainForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "三菱 CO2 雷射加工機 完整功能測試模擬器 (SPEC: S26888-C)";
-
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAlarms)).EndInit();
-            this.grpDashboard.ResumeLayout(false);
-            this.grpDashboard.PerformLayout();
-            this.grpRecipe.ResumeLayout(false);
-            this.grpRecipe.PerformLayout();
-            this.grpSchedule.ResumeLayout(false);
-            this.grpSchedule.PerformLayout();
-            this.grpMode.ResumeLayout(false);
-            this.grpAlarm.ResumeLayout(false);
-            this.grpAlarm.PerformLayout();
-            this.grpLog.ResumeLayout(false);
-            this.grpLog.PerformLayout();
-            this.ResumeLayout(false);
+            grpDashboard = new GroupBox();
+            pnlGreen = new Panel();
+            lblGreen = new Label();
+            pnlYellow = new Panel();
+            lblYellow = new Label();
+            pnlRed = new Panel();
+            lblRed = new Label();
+            lblStatusBadge = new Label();
+            lblModeBadge = new Label();
+            lblWatchDogTitle = new Label();
+            chkWatchDogEnable = new CheckBox();
+            btnFeedDog = new Button();
+            pbWatchDog = new ProgressBar();
+            lblWatchDogVal = new Label();
+            grpRecipe = new GroupBox();
+            lblLotInput = new Label();
+            txtLotInput = new TextBox();
+            btnInputLot = new Button();
+            btnTriggerGetRecipeReq = new Button();
+            lblGetRecipeReq = new Label();
+            lblReqPrg = new Label();
+            txtReqPrg = new TextBox();
+            lblReqCnd = new Label();
+            txtReqCnd = new TextBox();
+            lblReqSheet = new Label();
+            txtReqSheet = new TextBox();
+            lblGetRecipeAck = new Label();
+            txtGetRecipeAck = new TextBox();
+            grpSchedule = new GroupBox();
+            lblActivePrg = new Label();
+            lblActiveLot = new Label();
+            pbProcessing = new ProgressBar();
+            lblCounts = new Label();
+            lblLaserParams = new Label();
+            btnStartRun = new Button();
+            btnStopRun = new Button();
+            btnSimFailTarget = new Button();
+            grpMode = new GroupBox();
+            btnSetOffline = new Button();
+            btnSetLocal = new Button();
+            btnSetSemiAuto = new Button();
+            btnSetAuto = new Button();
+            grpAlarm = new GroupBox();
+            lblPreset = new Label();
+            cboPresetAlarms = new ComboBox();
+            txtCustomAlarmNo = new TextBox();
+            txtCustomAlarmMsg = new TextBox();
+            btnTriggerAlarm = new Button();
+            btnAlReset = new Button();
+            dgvAlarms = new DataGridView();
+            colSlot = new DataGridViewTextBoxColumn();
+            colAlarmNo = new DataGridViewTextBoxColumn();
+            colAlarmMsg = new DataGridViewTextBoxColumn();
+            colAlarmType = new DataGridViewTextBoxColumn();
+            colTriggerTime = new DataGridViewTextBoxColumn();
+            grpLog = new GroupBox();
+            txtLog = new TextBox();
+            btnClearLog = new Button();
+            grpDashboard.SuspendLayout();
+            grpRecipe.SuspendLayout();
+            grpSchedule.SuspendLayout();
+            grpMode.SuspendLayout();
+            grpAlarm.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvAlarms).BeginInit();
+            grpLog.SuspendLayout();
+            SuspendLayout();
+            // 
+            // grpDashboard
+            // 
+            grpDashboard.Controls.Add(pnlGreen);
+            grpDashboard.Controls.Add(lblGreen);
+            grpDashboard.Controls.Add(pnlYellow);
+            grpDashboard.Controls.Add(lblYellow);
+            grpDashboard.Controls.Add(pnlRed);
+            grpDashboard.Controls.Add(lblRed);
+            grpDashboard.Controls.Add(lblStatusBadge);
+            grpDashboard.Controls.Add(lblModeBadge);
+            grpDashboard.Controls.Add(lblWatchDogTitle);
+            grpDashboard.Controls.Add(chkWatchDogEnable);
+            grpDashboard.Controls.Add(btnFeedDog);
+            grpDashboard.Controls.Add(pbWatchDog);
+            grpDashboard.Controls.Add(lblWatchDogVal);
+            grpDashboard.Location = new Point(12, 10);
+            grpDashboard.Name = "grpDashboard";
+            grpDashboard.Size = new Size(1140, 95);
+            grpDashboard.TabIndex = 0;
+            grpDashboard.TabStop = false;
+            grpDashboard.Text = "機台即時狀態看板 (Dashboard)";
+            // 
+            // pnlGreen
+            // 
+            pnlGreen.BackColor = Color.DarkGreen;
+            pnlGreen.BorderStyle = BorderStyle.FixedSingle;
+            pnlGreen.Location = new Point(20, 30);
+            pnlGreen.Name = "pnlGreen";
+            pnlGreen.Size = new Size(26, 26);
+            pnlGreen.TabIndex = 0;
+            // 
+            // lblGreen
+            // 
+            lblGreen.AutoSize = true;
+            lblGreen.Location = new Point(52, 35);
+            lblGreen.Name = "lblGreen";
+            lblGreen.Size = new Size(81, 19);
+            lblGreen.TabIndex = 1;
+            lblGreen.Text = "綠燈 (Run)";
+            // 
+            // pnlYellow
+            // 
+            pnlYellow.BackColor = Color.DarkGoldenrod;
+            pnlYellow.BorderStyle = BorderStyle.FixedSingle;
+            pnlYellow.Location = new Point(139, 30);
+            pnlYellow.Name = "pnlYellow";
+            pnlYellow.Size = new Size(26, 26);
+            pnlYellow.TabIndex = 2;
+            // 
+            // lblYellow
+            // 
+            lblYellow.AutoSize = true;
+            lblYellow.Location = new Point(167, 35);
+            lblYellow.Name = "lblYellow";
+            lblYellow.Size = new Size(92, 19);
+            lblYellow.TabIndex = 3;
+            lblYellow.Text = "黃燈 (Beam)";
+            // 
+            // pnlRed
+            // 
+            pnlRed.BackColor = Color.DarkRed;
+            pnlRed.BorderStyle = BorderStyle.FixedSingle;
+            pnlRed.Location = new Point(273, 30);
+            pnlRed.Name = "pnlRed";
+            pnlRed.Size = new Size(26, 26);
+            pnlRed.TabIndex = 4;
+            // 
+            // lblRed
+            // 
+            lblRed.AutoSize = true;
+            lblRed.Location = new Point(305, 35);
+            lblRed.Name = "lblRed";
+            lblRed.Size = new Size(95, 19);
+            lblRed.TabIndex = 5;
+            lblRed.Text = "紅燈 (Alarm)";
+            // 
+            // lblStatusBadge
+            // 
+            lblStatusBadge.BackColor = Color.Gold;
+            lblStatusBadge.BorderStyle = BorderStyle.FixedSingle;
+            lblStatusBadge.Font = new Font("微軟正黑體", 12F, FontStyle.Bold);
+            lblStatusBadge.Location = new Point(369, 54);
+            lblStatusBadge.Name = "lblStatusBadge";
+            lblStatusBadge.Size = new Size(216, 30);
+            lblStatusBadge.TabIndex = 6;
+            lblStatusBadge.Text = "[3] Idle (待機)";
+            lblStatusBadge.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lblModeBadge
+            // 
+            lblModeBadge.BackColor = Color.LightSkyBlue;
+            lblModeBadge.BorderStyle = BorderStyle.FixedSingle;
+            lblModeBadge.Font = new Font("微軟正黑體", 11F, FontStyle.Bold);
+            lblModeBadge.Location = new Point(596, 54);
+            lblModeBadge.Name = "lblModeBadge";
+            lblModeBadge.Size = new Size(222, 31);
+            lblModeBadge.TabIndex = 7;
+            lblModeBadge.Text = "Mode: Online-Auto";
+            lblModeBadge.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lblWatchDogTitle
+            // 
+            lblWatchDogTitle.AutoSize = true;
+            lblWatchDogTitle.Font = new Font("微軟正黑體", 9F, FontStyle.Bold);
+            lblWatchDogTitle.Location = new Point(741, 24);
+            lblWatchDogTitle.Name = "lblWatchDogTitle";
+            lblWatchDogTitle.Size = new Size(195, 19);
+            lblWatchDogTitle.TabIndex = 8;
+            lblWatchDogTitle.Text = "Host WatchDog 心跳監控:";
+            // 
+            // chkWatchDogEnable
+            // 
+            chkWatchDogEnable.AutoSize = true;
+            chkWatchDogEnable.Checked = true;
+            chkWatchDogEnable.CheckState = CheckState.Checked;
+            chkWatchDogEnable.Font = new Font("微軟正黑體", 9F);
+            chkWatchDogEnable.Location = new Point(938, 21);
+            chkWatchDogEnable.Name = "chkWatchDogEnable";
+            chkWatchDogEnable.Size = new Size(91, 23);
+            chkWatchDogEnable.TabIndex = 9;
+            chkWatchDogEnable.Text = "啟用監控";
+            chkWatchDogEnable.UseVisualStyleBackColor = true;
+            // 
+            // btnFeedDog
+            // 
+            btnFeedDog.Font = new Font("微軟正黑體", 8.5F);
+            btnFeedDog.Location = new Point(1035, 19);
+            btnFeedDog.Name = "btnFeedDog";
+            btnFeedDog.Size = new Size(95, 25);
+            btnFeedDog.TabIndex = 10;
+            btnFeedDog.Text = "手動餵狗 (+1)";
+            btnFeedDog.UseVisualStyleBackColor = true;
+            // 
+            // pbWatchDog
+            // 
+            pbWatchDog.Location = new Point(860, 69);
+            pbWatchDog.Maximum = 10;
+            pbWatchDog.Name = "pbWatchDog";
+            pbWatchDog.Size = new Size(220, 20);
+            pbWatchDog.TabIndex = 11;
+            pbWatchDog.Value = 10;
+            // 
+            // lblWatchDogVal
+            // 
+            lblWatchDogVal.AutoSize = true;
+            lblWatchDogVal.Font = new Font("Arial", 9.5F, FontStyle.Bold);
+            lblWatchDogVal.Location = new Point(843, 47);
+            lblWatchDogVal.Name = "lblWatchDogVal";
+            lblWatchDogVal.Size = new Size(246, 19);
+            lblWatchDogVal.TabIndex = 12;
+            lblWatchDogVal.Text = "10s [待命中 (等待上位機連線...)]";
+            // 
+            // grpRecipe
+            // 
+            grpRecipe.Controls.Add(lblLotInput);
+            grpRecipe.Controls.Add(txtLotInput);
+            grpRecipe.Controls.Add(btnInputLot);
+            grpRecipe.Controls.Add(btnTriggerGetRecipeReq);
+            grpRecipe.Controls.Add(lblGetRecipeReq);
+            grpRecipe.Controls.Add(lblReqPrg);
+            grpRecipe.Controls.Add(txtReqPrg);
+            grpRecipe.Controls.Add(lblReqCnd);
+            grpRecipe.Controls.Add(txtReqCnd);
+            grpRecipe.Controls.Add(lblReqSheet);
+            grpRecipe.Controls.Add(txtReqSheet);
+            grpRecipe.Controls.Add(lblGetRecipeAck);
+            grpRecipe.Controls.Add(txtGetRecipeAck);
+            grpRecipe.Location = new Point(12, 115);
+            grpRecipe.Name = "grpRecipe";
+            grpRecipe.Size = new Size(554, 230);
+            grpRecipe.TabIndex = 1;
+            grpRecipe.TabStop = false;
+            grpRecipe.Text = "操作員條碼輸入與配方交握 (Recipe Handshake SPEC 4-4)";
+            // 
+            // lblLotInput
+            // 
+            lblLotInput.AutoSize = true;
+            lblLotInput.Location = new Point(15, 30);
+            lblLotInput.Name = "lblLotInput";
+            lblLotInput.Size = new Size(93, 19);
+            lblLotInput.TabIndex = 0;
+            lblLotInput.Text = "批號 (LotID):";
+            // 
+            // txtLotInput
+            // 
+            txtLotInput.Location = new Point(115, 25);
+            txtLotInput.Name = "txtLotInput";
+            txtLotInput.Size = new Size(165, 27);
+            txtLotInput.TabIndex = 1;
+            txtLotInput.Text = "LOT20260916-01";
+            // 
+            // btnInputLot
+            // 
+            btnInputLot.BackColor = Color.LightSteelBlue;
+            btnInputLot.Font = new Font("微軟正黑體", 9F, FontStyle.Bold);
+            btnInputLot.Location = new Point(284, 24);
+            btnInputLot.Name = "btnInputLot";
+            btnInputLot.Size = new Size(130, 29);
+            btnInputLot.TabIndex = 2;
+            btnInputLot.Text = "模擬操作員刷入";
+            btnInputLot.UseVisualStyleBackColor = false;
+            // 
+            // btnTriggerGetRecipeReq
+            // 
+            btnTriggerGetRecipeReq.BackColor = Color.LightSkyBlue;
+            btnTriggerGetRecipeReq.Font = new Font("微軟正黑體", 9F, FontStyle.Bold);
+            btnTriggerGetRecipeReq.Location = new Point(420, 23);
+            btnTriggerGetRecipeReq.Name = "btnTriggerGetRecipeReq";
+            btnTriggerGetRecipeReq.Size = new Size(120, 29);
+            btnTriggerGetRecipeReq.TabIndex = 3;
+            btnTriggerGetRecipeReq.Text = "發出 GetRecipe.Req";
+            btnTriggerGetRecipeReq.UseVisualStyleBackColor = false;
+            // 
+            // lblGetRecipeReq
+            // 
+            lblGetRecipeReq.AutoSize = true;
+            lblGetRecipeReq.Font = new Font("微軟正黑體", 9.5F, FontStyle.Bold);
+            lblGetRecipeReq.ForeColor = Color.DarkSlateGray;
+            lblGetRecipeReq.Location = new Point(15, 68);
+            lblGetRecipeReq.Name = "lblGetRecipeReq";
+            lblGetRecipeReq.Size = new Size(265, 21);
+            lblGetRecipeReq.TabIndex = 3;
+            lblGetRecipeReq.Text = "GetRecipe.Req: False (等待刷卡中)";
+            // 
+            // lblReqPrg
+            // 
+            lblReqPrg.AutoSize = true;
+            lblReqPrg.Location = new Point(15, 105);
+            lblReqPrg.Name = "lblReqPrg";
+            lblReqPrg.Size = new Size(102, 19);
+            lblReqPrg.TabIndex = 4;
+            lblReqPrg.Text = "ProgramFile :";
+            // 
+            // txtReqPrg
+            // 
+            txtReqPrg.Location = new Point(130, 102);
+            txtReqPrg.Name = "txtReqPrg";
+            txtReqPrg.ReadOnly = true;
+            txtReqPrg.Size = new Size(410, 27);
+            txtReqPrg.TabIndex = 5;
+            // 
+            // lblReqCnd
+            // 
+            lblReqCnd.AutoSize = true;
+            lblReqCnd.Location = new Point(15, 140);
+            lblReqCnd.Name = "lblReqCnd";
+            lblReqCnd.Size = new Size(109, 19);
+            lblReqCnd.TabIndex = 6;
+            lblReqCnd.Text = "ConditionFile :";
+            // 
+            // txtReqCnd
+            // 
+            txtReqCnd.Location = new Point(130, 137);
+            txtReqCnd.Name = "txtReqCnd";
+            txtReqCnd.ReadOnly = true;
+            txtReqCnd.Size = new Size(410, 27);
+            txtReqCnd.TabIndex = 7;
+            // 
+            // lblReqSheet
+            // 
+            lblReqSheet.AutoSize = true;
+            lblReqSheet.Location = new Point(15, 175);
+            lblReqSheet.Name = "lblReqSheet";
+            lblReqSheet.Size = new Size(90, 19);
+            lblReqSheet.TabIndex = 8;
+            lblReqSheet.Text = "SheetNum :";
+            // 
+            // txtReqSheet
+            // 
+            txtReqSheet.Location = new Point(130, 172);
+            txtReqSheet.Name = "txtReqSheet";
+            txtReqSheet.ReadOnly = true;
+            txtReqSheet.Size = new Size(144, 27);
+            txtReqSheet.TabIndex = 9;
+            // 
+            // lblGetRecipeAck
+            // 
+            lblGetRecipeAck.AutoSize = true;
+            lblGetRecipeAck.Location = new Point(280, 175);
+            lblGetRecipeAck.Name = "lblGetRecipeAck";
+            lblGetRecipeAck.Size = new Size(114, 19);
+            lblGetRecipeAck.TabIndex = 10;
+            lblGetRecipeAck.Text = "GetRecipe.Ack :";
+            // 
+            // txtGetRecipeAck
+            // 
+            txtGetRecipeAck.Location = new Point(394, 172);
+            txtGetRecipeAck.Name = "txtGetRecipeAck";
+            txtGetRecipeAck.ReadOnly = true;
+            txtGetRecipeAck.Size = new Size(146, 27);
+            txtGetRecipeAck.TabIndex = 11;
+            // 
+            // grpSchedule
+            // 
+            grpSchedule.Controls.Add(lblActivePrg);
+            grpSchedule.Controls.Add(lblActiveLot);
+            grpSchedule.Controls.Add(pbProcessing);
+            grpSchedule.Controls.Add(lblCounts);
+            grpSchedule.Controls.Add(lblLaserParams);
+            grpSchedule.Controls.Add(btnStartRun);
+            grpSchedule.Controls.Add(btnStopRun);
+            grpSchedule.Controls.Add(btnSimFailTarget);
+            grpSchedule.Location = new Point(576, 115);
+            grpSchedule.Name = "grpSchedule";
+            grpSchedule.Size = new Size(576, 230);
+            grpSchedule.TabIndex = 2;
+            grpSchedule.TabStop = false;
+            grpSchedule.Text = "連續運轉與加工監控 (Schedule & Progress SPEC 4-5)";
+            // 
+            // lblActivePrg
+            // 
+            lblActivePrg.AutoSize = true;
+            lblActivePrg.Font = new Font("微軟正黑體", 9.5F, FontStyle.Bold);
+            lblActivePrg.Location = new Point(15, 28);
+            lblActivePrg.Name = "lblActivePrg";
+            lblActivePrg.Size = new Size(190, 21);
+            lblActivePrg.TabIndex = 0;
+            lblActivePrg.Text = "當前加工程式: (尚未載入)";
+            // 
+            // lblActiveLot
+            // 
+            lblActiveLot.AutoSize = true;
+            lblActiveLot.Location = new Point(15, 55);
+            lblActiveLot.Name = "lblActiveLot";
+            lblActiveLot.Size = new Size(124, 19);
+            lblActiveLot.TabIndex = 1;
+            lblActiveLot.Text = "作用批號: (None)";
+            // 
+            // pbProcessing
+            // 
+            pbProcessing.Location = new Point(18, 85);
+            pbProcessing.Name = "pbProcessing";
+            pbProcessing.Size = new Size(548, 22);
+            pbProcessing.TabIndex = 2;
+            // 
+            // lblCounts
+            // 
+            lblCounts.AutoSize = true;
+            lblCounts.Font = new Font("微軟正黑體", 10F, FontStyle.Bold);
+            lblCounts.Location = new Point(15, 120);
+            lblCounts.Name = "lblCounts";
+            lblCounts.Size = new Size(394, 22);
+            lblCounts.TabIndex = 3;
+            lblCounts.Text = "加工進度: Processed=0 / Scheduled=0 (失敗=0)";
+            // 
+            // lblLaserParams
+            // 
+            lblLaserParams.AutoSize = true;
+            lblLaserParams.ForeColor = Color.DarkSlateGray;
+            lblLaserParams.Location = new Point(15, 150);
+            lblLaserParams.Name = "lblLaserParams";
+            lblLaserParams.Size = new Size(470, 19);
+            lblLaserParams.TabIndex = 4;
+            lblLaserParams.Text = "雷射功率: 5500W | 頻率: 100Hz | 氣壓: -10.5kPa | 聚焦鏡溫度: 24.2℃";
+            // 
+            // btnStartRun
+            // 
+            btnStartRun.BackColor = Color.LightGreen;
+            btnStartRun.Font = new Font("微軟正黑體", 9.5F, FontStyle.Bold);
+            btnStartRun.Location = new Point(18, 180);
+            btnStartRun.Name = "btnStartRun";
+            btnStartRun.Size = new Size(160, 36);
+            btnStartRun.TabIndex = 5;
+            btnStartRun.Text = "手動啟動連續運轉";
+            btnStartRun.UseVisualStyleBackColor = false;
+            // 
+            // btnStopRun
+            // 
+            btnStopRun.BackColor = Color.MistyRose;
+            btnStopRun.Font = new Font("微軟正黑體", 9.5F);
+            btnStopRun.Location = new Point(190, 180);
+            btnStopRun.Name = "btnStopRun";
+            btnStopRun.Size = new Size(120, 36);
+            btnStopRun.TabIndex = 6;
+            btnStopRun.Text = "暫停/停止運轉";
+            btnStopRun.UseVisualStyleBackColor = false;
+            // 
+            // btnSimFailTarget
+            // 
+            btnSimFailTarget.Location = new Point(325, 180);
+            btnSimFailTarget.Name = "btnSimFailTarget";
+            btnSimFailTarget.Size = new Size(150, 36);
+            btnSimFailTarget.TabIndex = 7;
+            btnSimFailTarget.Text = "模擬靶位抓取失敗";
+            btnSimFailTarget.UseVisualStyleBackColor = true;
+            // 
+            // grpMode
+            // 
+            grpMode.Controls.Add(btnSetOffline);
+            grpMode.Controls.Add(btnSetLocal);
+            grpMode.Controls.Add(btnSetSemiAuto);
+            grpMode.Controls.Add(btnSetAuto);
+            grpMode.Location = new Point(12, 355);
+            grpMode.Name = "grpMode";
+            grpMode.Size = new Size(554, 75);
+            grpMode.TabIndex = 3;
+            grpMode.TabStop = false;
+            grpMode.Text = "機台操作盤模式切換 (SPEC 4-1，機台端手動切換)";
+            // 
+            // btnSetOffline
+            // 
+            btnSetOffline.Location = new Point(20, 25);
+            btnSetOffline.Name = "btnSetOffline";
+            btnSetOffline.Size = new Size(115, 34);
+            btnSetOffline.TabIndex = 0;
+            btnSetOffline.Text = "0: OFFLINE";
+            btnSetOffline.UseVisualStyleBackColor = true;
+            // 
+            // btnSetLocal
+            // 
+            btnSetLocal.Location = new Point(150, 25);
+            btnSetLocal.Name = "btnSetLocal";
+            btnSetLocal.Size = new Size(115, 34);
+            btnSetLocal.TabIndex = 1;
+            btnSetLocal.Text = "1: LOCAL";
+            btnSetLocal.UseVisualStyleBackColor = true;
+            // 
+            // btnSetSemiAuto
+            // 
+            btnSetSemiAuto.Location = new Point(280, 25);
+            btnSetSemiAuto.Name = "btnSetSemiAuto";
+            btnSetSemiAuto.Size = new Size(125, 34);
+            btnSetSemiAuto.TabIndex = 2;
+            btnSetSemiAuto.Text = "2: SEMI-AUTO";
+            btnSetSemiAuto.UseVisualStyleBackColor = true;
+            // 
+            // btnSetAuto
+            // 
+            btnSetAuto.BackColor = Color.LightCyan;
+            btnSetAuto.Location = new Point(420, 25);
+            btnSetAuto.Name = "btnSetAuto";
+            btnSetAuto.Size = new Size(120, 34);
+            btnSetAuto.TabIndex = 3;
+            btnSetAuto.Text = "3: AUTO";
+            btnSetAuto.UseVisualStyleBackColor = false;
+            // 
+            // grpAlarm
+            // 
+            grpAlarm.Controls.Add(lblPreset);
+            grpAlarm.Controls.Add(cboPresetAlarms);
+            grpAlarm.Controls.Add(txtCustomAlarmNo);
+            grpAlarm.Controls.Add(txtCustomAlarmMsg);
+            grpAlarm.Controls.Add(btnTriggerAlarm);
+            grpAlarm.Controls.Add(btnAlReset);
+            grpAlarm.Controls.Add(dgvAlarms);
+            grpAlarm.Location = new Point(12, 440);
+            grpAlarm.Name = "grpAlarm";
+            grpAlarm.Size = new Size(555, 320);
+            grpAlarm.TabIndex = 4;
+            grpAlarm.TabStop = false;
+            grpAlarm.Text = "警報注入與 AL-RESET 復歸 (SPEC 4-7，10 組 Alarm Slot)";
+            // 
+            // lblPreset
+            // 
+            lblPreset.AutoSize = true;
+            lblPreset.Location = new Point(15, 28);
+            lblPreset.Name = "lblPreset";
+            lblPreset.Size = new Size(72, 19);
+            lblPreset.TabIndex = 0;
+            lblPreset.Text = "預置警報:";
+            // 
+            // cboPresetAlarms
+            // 
+            cboPresetAlarms.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboPresetAlarms.FormattingEnabled = true;
+            cboPresetAlarms.Location = new Point(93, 25);
+            cboPresetAlarms.Name = "cboPresetAlarms";
+            cboPresetAlarms.Size = new Size(237, 27);
+            cboPresetAlarms.TabIndex = 1;
+            // 
+            // txtCustomAlarmNo
+            // 
+            txtCustomAlarmNo.Location = new Point(340, 25);
+            txtCustomAlarmNo.Name = "txtCustomAlarmNo";
+            txtCustomAlarmNo.Size = new Size(60, 27);
+            txtCustomAlarmNo.TabIndex = 2;
+            txtCustomAlarmNo.Text = "0216";
+            // 
+            // txtCustomAlarmMsg
+            // 
+            txtCustomAlarmMsg.Location = new Point(405, 25);
+            txtCustomAlarmMsg.Name = "txtCustomAlarmMsg";
+            txtCustomAlarmMsg.Size = new Size(140, 27);
+            txtCustomAlarmMsg.TabIndex = 3;
+            txtCustomAlarmMsg.Text = "工件偏移異常";
+            // 
+            // btnTriggerAlarm
+            // 
+            btnTriggerAlarm.BackColor = Color.LightCoral;
+            btnTriggerAlarm.Font = new Font("微軟正黑體", 9F, FontStyle.Bold);
+            btnTriggerAlarm.Location = new Point(15, 60);
+            btnTriggerAlarm.Name = "btnTriggerAlarm";
+            btnTriggerAlarm.Size = new Size(160, 32);
+            btnTriggerAlarm.TabIndex = 4;
+            btnTriggerAlarm.Text = "注入警報 (Trigger)";
+            btnTriggerAlarm.UseVisualStyleBackColor = false;
+            // 
+            // btnAlReset
+            // 
+            btnAlReset.BackColor = Color.LightYellow;
+            btnAlReset.Font = new Font("微軟正黑體", 9F, FontStyle.Bold);
+            btnAlReset.Location = new Point(190, 60);
+            btnAlReset.Name = "btnAlReset";
+            btnAlReset.Size = new Size(215, 32);
+            btnAlReset.TabIndex = 5;
+            btnAlReset.Text = "機台 AL-RESET (警報復歸)";
+            btnAlReset.UseVisualStyleBackColor = false;
+            // 
+            // dgvAlarms
+            // 
+            dgvAlarms.AllowUserToAddRows = false;
+            dgvAlarms.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvAlarms.BackgroundColor = Color.White;
+            dgvAlarms.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvAlarms.Columns.AddRange(new DataGridViewColumn[] { colSlot, colAlarmNo, colAlarmMsg, colAlarmType, colTriggerTime });
+            dgvAlarms.Location = new Point(15, 100);
+            dgvAlarms.Name = "dgvAlarms";
+            dgvAlarms.ReadOnly = true;
+            dgvAlarms.RowHeadersWidth = 51;
+            dgvAlarms.RowTemplate.Height = 25;
+            dgvAlarms.Size = new Size(530, 205);
+            dgvAlarms.TabIndex = 6;
+            // 
+            // colSlot
+            // 
+            colSlot.HeaderText = "Slot";
+            colSlot.MinimumWidth = 6;
+            colSlot.Name = "colSlot";
+            colSlot.ReadOnly = true;
+            // 
+            // colAlarmNo
+            // 
+            colAlarmNo.HeaderText = "代碼";
+            colAlarmNo.MinimumWidth = 6;
+            colAlarmNo.Name = "colAlarmNo";
+            colAlarmNo.ReadOnly = true;
+            // 
+            // colAlarmMsg
+            // 
+            colAlarmMsg.HeaderText = "警報訊息";
+            colAlarmMsg.MinimumWidth = 6;
+            colAlarmMsg.Name = "colAlarmMsg";
+            colAlarmMsg.ReadOnly = true;
+            // 
+            // colAlarmType
+            // 
+            colAlarmType.HeaderText = "等級";
+            colAlarmType.MinimumWidth = 6;
+            colAlarmType.Name = "colAlarmType";
+            colAlarmType.ReadOnly = true;
+            // 
+            // colTriggerTime
+            // 
+            colTriggerTime.HeaderText = "發生時間";
+            colTriggerTime.MinimumWidth = 6;
+            colTriggerTime.Name = "colTriggerTime";
+            colTriggerTime.ReadOnly = true;
+            // 
+            // grpLog
+            // 
+            grpLog.Controls.Add(txtLog);
+            grpLog.Controls.Add(btnClearLog);
+            grpLog.Location = new Point(576, 355);
+            grpLog.Name = "grpLog";
+            grpLog.Size = new Size(576, 405);
+            grpLog.TabIndex = 5;
+            grpLog.TabStop = false;
+            grpLog.Text = "機台事件與通訊日誌 (Event Log)";
+            // 
+            // txtLog
+            // 
+            txtLog.BackColor = Color.WhiteSmoke;
+            txtLog.Dock = DockStyle.Top;
+            txtLog.Font = new Font("Consolas", 9F);
+            txtLog.Location = new Point(3, 23);
+            txtLog.Multiline = true;
+            txtLog.Name = "txtLog";
+            txtLog.ReadOnly = true;
+            txtLog.ScrollBars = ScrollBars.Vertical;
+            txtLog.Size = new Size(570, 345);
+            txtLog.TabIndex = 0;
+            // 
+            // btnClearLog
+            // 
+            btnClearLog.Location = new Point(440, 368);
+            btnClearLog.Name = "btnClearLog";
+            btnClearLog.Size = new Size(110, 30);
+            btnClearLog.TabIndex = 1;
+            btnClearLog.Text = "清空日誌";
+            btnClearLog.UseVisualStyleBackColor = true;
+            // 
+            // SimulatorMainForm
+            // 
+            AutoScaleDimensions = new SizeF(9F, 19F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1164, 771);
+            Controls.Add(grpDashboard);
+            Controls.Add(grpRecipe);
+            Controls.Add(grpSchedule);
+            Controls.Add(grpMode);
+            Controls.Add(grpAlarm);
+            Controls.Add(grpLog);
+            Font = new Font("微軟正黑體", 9F);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            Name = "SimulatorMainForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "三菱 CO2 雷射加工機 完整功能測試模擬器 (SPEC: S26888-C)";
+            grpDashboard.ResumeLayout(false);
+            grpDashboard.PerformLayout();
+            grpRecipe.ResumeLayout(false);
+            grpRecipe.PerformLayout();
+            grpSchedule.ResumeLayout(false);
+            grpSchedule.PerformLayout();
+            grpMode.ResumeLayout(false);
+            grpAlarm.ResumeLayout(false);
+            grpAlarm.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvAlarms).EndInit();
+            grpLog.ResumeLayout(false);
+            grpLog.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion
