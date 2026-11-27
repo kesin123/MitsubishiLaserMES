@@ -350,7 +350,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
             // 
             lblMqttLed.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblMqttLed.AutoSize = true;
-            lblMqttLed.Font = new Font("Arial", 8F, FontStyle.Bold);
+            lblMqttLed.Font = new Font("Arial", 8F, FontStyle.Bold, GraphicsUnit.Point);
             lblMqttLed.Location = new Point(1094, 39);
             lblMqttLed.Name = "lblMqttLed";
             lblMqttLed.Size = new Size(34, 16);
@@ -363,7 +363,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
             btnRoleSwitch.BackColor = Color.WhiteSmoke;
             btnRoleSwitch.FlatAppearance.BorderColor = Color.Silver;
             btnRoleSwitch.FlatStyle = FlatStyle.Flat;
-            btnRoleSwitch.Font = new Font("微軟正黑體", 9F, FontStyle.Bold);
+            btnRoleSwitch.Font = new Font("微軟正黑體", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnRoleSwitch.ForeColor = Color.DimGray;
             btnRoleSwitch.Location = new Point(1058, 67);
             btnRoleSwitch.Name = "btnRoleSwitch";
@@ -728,7 +728,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
             // lblOpcConn
             // 
             lblOpcConn.AutoSize = true;
-            lblOpcConn.Font = new Font("微軟正黑體", 10F, FontStyle.Bold);
+            lblOpcConn.Font = new Font("微軟正黑體", 10F, FontStyle.Bold, GraphicsUnit.Point);
             lblOpcConn.Location = new Point(20, 28);
             lblOpcConn.Name = "lblOpcConn";
             lblOpcConn.Size = new Size(143, 22);
@@ -738,7 +738,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
             // lblMachineState
             // 
             lblMachineState.AutoSize = true;
-            lblMachineState.Font = new Font("微軟正黑體", 10F, FontStyle.Bold);
+            lblMachineState.Font = new Font("微軟正黑體", 10F, FontStyle.Bold, GraphicsUnit.Point);
             lblMachineState.Location = new Point(210, 28);
             lblMachineState.Name = "lblMachineState";
             lblMachineState.Size = new Size(177, 22);
@@ -748,7 +748,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
             // lblProgress
             // 
             lblProgress.AutoSize = true;
-            lblProgress.Font = new Font("微軟正黑體", 10F);
+            lblProgress.Font = new Font("微軟正黑體", 10F, FontStyle.Regular, GraphicsUnit.Point);
             lblProgress.Location = new Point(420, 28);
             lblProgress.Name = "lblProgress";
             lblProgress.Size = new Size(121, 22);
@@ -859,10 +859,10 @@ namespace MitsubishiLaserMES.WinForms.Forms
             // 
             btnOpenSimulator.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnOpenSimulator.BackColor = Color.LightSkyBlue;
-            btnOpenSimulator.Font = new Font("微軟正黑體", 9F, FontStyle.Bold);
-            btnOpenSimulator.Location = new Point(750, 20);
+            btnOpenSimulator.Font = new Font("微軟正黑體", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnOpenSimulator.Location = new Point(717, 20);
             btnOpenSimulator.Name = "btnOpenSimulator";
-            btnOpenSimulator.Size = new Size(165, 34);
+            btnOpenSimulator.Size = new Size(198, 34);
             btnOpenSimulator.TabIndex = 14;
             btnOpenSimulator.Text = "開啟機台模擬器 (OPC)";
             btnOpenSimulator.UseVisualStyleBackColor = false;
@@ -921,7 +921,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
             // btnTrackIn
             // 
             btnTrackIn.BackColor = Color.LightSteelBlue;
-            btnTrackIn.Font = new Font("微軟正黑體", 10F, FontStyle.Bold);
+            btnTrackIn.Font = new Font("微軟正黑體", 10F, FontStyle.Bold, GraphicsUnit.Point);
             btnTrackIn.Location = new Point(15, 30);
             btnTrackIn.Name = "btnTrackIn";
             btnTrackIn.Size = new Size(135, 42);
@@ -932,7 +932,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
             // btnTrackOut
             // 
             btnTrackOut.BackColor = Color.LightSkyBlue;
-            btnTrackOut.Font = new Font("微軟正黑體", 10F, FontStyle.Bold);
+            btnTrackOut.Font = new Font("微軟正黑體", 10F, FontStyle.Bold, GraphicsUnit.Point);
             btnTrackOut.Location = new Point(15, 85);
             btnTrackOut.Name = "btnTrackOut";
             btnTrackOut.Size = new Size(135, 42);
@@ -1119,7 +1119,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
             // chkEnableTestRecipe
             // 
             chkEnableTestRecipe.AutoSize = true;
-            chkEnableTestRecipe.Font = new Font("微軟正黑體", 9F, FontStyle.Bold);
+            chkEnableTestRecipe.Font = new Font("微軟正黑體", 9F, FontStyle.Bold, GraphicsUnit.Point);
             chkEnableTestRecipe.Location = new Point(15, 23);
             chkEnableTestRecipe.Name = "chkEnableTestRecipe";
             chkEnableTestRecipe.Size = new Size(522, 23);
@@ -1130,7 +1130,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
             // btnTriggerHandshakeNow
             // 
             btnTriggerHandshakeNow.BackColor = Color.LightSkyBlue;
-            btnTriggerHandshakeNow.Font = new Font("微軟正黑體", 9F, FontStyle.Bold);
+            btnTriggerHandshakeNow.Font = new Font("微軟正黑體", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnTriggerHandshakeNow.Location = new Point(563, 20);
             btnTriggerHandshakeNow.Name = "btnTriggerHandshakeNow";
             btnTriggerHandshakeNow.Size = new Size(165, 28);
@@ -1150,7 +1150,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
             // lblTestHandshakeStatus
             // 
             lblTestHandshakeStatus.AutoSize = true;
-            lblTestHandshakeStatus.Font = new Font("微軟正黑體", 9F, FontStyle.Bold);
+            lblTestHandshakeStatus.Font = new Font("微軟正黑體", 9F, FontStyle.Bold, GraphicsUnit.Point);
             lblTestHandshakeStatus.ForeColor = Color.DarkSlateBlue;
             lblTestHandshakeStatus.Location = new Point(834, 25);
             lblTestHandshakeStatus.Name = "lblTestHandshakeStatus";
@@ -1302,7 +1302,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
             // 
             // txtResult
             // 
-            txtResult.Font = new Font("微軟正黑體", 9.5F, FontStyle.Bold);
+            txtResult.Font = new Font("微軟正黑體", 9.5F, FontStyle.Bold, GraphicsUnit.Point);
             txtResult.Location = new Point(65, 22);
             txtResult.Name = "txtResult";
             txtResult.ReadOnly = true;
@@ -1363,7 +1363,7 @@ namespace MitsubishiLaserMES.WinForms.Forms
             Controls.Add(lblMqttLed);
             Controls.Add(tabMain);
             Controls.Add(grpResult);
-            Font = new Font("微軟正黑體", 9F);
+            Font = new Font("微軟正黑體", 9F, FontStyle.Regular, GraphicsUnit.Point);
             MinimumSize = new Size(1180, 550);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;

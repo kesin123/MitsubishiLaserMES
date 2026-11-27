@@ -1,21 +1,24 @@
 # 當前任務規格 (CURRENT_TASK.md)
 
 ## 1. 用戶目標
-生成此專案（三菱 CO2 雷射加工機 MES 中繼系統 `MitsubishiLaserMES`）完整詳細的交接文件，並輸出至 `DOC/專案交接文件.md`。
+將三菱 CO2 雷射加工機 MES 中繼系統（`MitsubishiLaserMES`）方案中的三個專案與 `Protocol.Core` 降版至 **.NET 6 (x86)**：
+- `dll/Protocol.Core/Protocol.Core.csproj` → `net6.0`、`x86`（編譯並更新 `dll/Protocol.Core.dll`）
+- `src/MitsubishiLaserMES.Core/MitsubishiLaserMES.Core.csproj` → `net6.0`、`x86`
+- `src/MitsubishiLaserMES.WinForms/MitsubishiLaserMES.WinForms.csproj` → `net6.0-windows`、`x86`
+- `src/MitsubishiLaser.Simulator/MitsubishiLaser.Simulator.csproj` → `net6.0-windows`、`x86`
 
 ## 2. 驗收標準
-- 成功建立 `DOC/專案交接文件.md`，格式為標準 GitHub Flavored Markdown（正體中文，台灣科技習慣用語）。
-- 內容完整涵蓋：
-  1. 專案總覽、系統定位與 Mermaid 系統拓樸架構圖。
-  2. 開發環境與技術棧（.NET 8、WinForms、MQTTnet、OPCFoundation.NetStandard.Opc.Ua、Newtonsoft.Json、Protocol.Core.dll）。
-  3. 解決方案與目錄結構詳解（`MitsubishiLaserMES.Core`、`MitsubishiLaserMES.WinForms`、`MitsubishiLaser.Simulator`、`Dictionaries/DR0026.json`、`DOC/`）。
-  4. 核心業務流程與交握時序圖（自動切換 `SEMI-AUTO` 模式、機台主動觸發 `GetRecipe.Req` 自動進站與等待 `PP_SELECT` 五步配方交握時序、三層配方路徑覆蓋優先權、防呆強制移除進站機制）。
-  5. 上位 EAP (MQTT) 通訊協定實作細節（Topic 結構、信封格式、CMD 指令映射、TransactionID 配對、離線暫存補傳）。
-  6. 下位三菱雷射機 (OPC UA) 通訊與節點規範（實機 DeviceXPlorer 1024-bit 憑證與設定相容性、完整 OPC UA 節點對照表）。
-  7. 組態設定（`appsettings.json`）、本地資料持久化（`tracked_orders.json`、`offline_buffer.json`）、雙軌日誌與 CSV 稽核機制。
-  8. 內建雷射機模擬器與調試工具說明。
-  9. 建置部署指令與現場故障排除指南。
-- 不影響現有專案程式碼與編譯狀態。
+- 三個主方案專案與 `Protocol.Core` 的 `TargetFramework` 皆已降版為 `net6.0` / `net6.0-windows`，並明確設定 `<PlatformTarget>x86</PlatformTarget>` 與 `<Platforms>x86</Platforms>`。
+- `MitsubishiLaserMES.sln` 的 `Debug|x86` 與 `Release|x86` 正確映射到三個專案的 `x86` 組態。
+- `dll/Protocol.Core.dll` 已由 `net6.0` (x86) 重新編譯並覆蓋更新。
+- 維持 `OPCFoundation.NetStandard.Opc.Ua 1.5.378.156` 以保留 `ITelemetryContext` API 相容性。
+- 清除舊 `bin/` 與 `obj/` 後，`dotnet build MitsubishiLaserMES.sln -c Debug -p:Platform=x86` 與 `Release` 編譯皆成功（0 Error）。
+- 驗證產出的 `*.runtimeconfig.json` 目標框架為 `net6.0`，且產出執行檔/DLL 之 PE 標頭為 32 位元（x86 / 32BITREQ）。
 
 ## 3. 修改邏輯
-- 建立 `DOC/專案交接文件.md`，寫入完整詳細的專案交接文件內容。
+1. 還原工作區 `src/` 程式碼檔案（`git restore src/`）。
+2. 更新三個 `.csproj` 檔案之 `TargetFramework`、`PlatformTarget` 與 `Platforms`。
+3. 更新 `MitsubishiLaserMES.sln` 的專案平台映射設定。
+4. 清理 `bin/` 與 `obj/`，執行 `dotnet restore` 驗證 NuGet 相容性。
+5. 修改 `dll/Protocol.Core/Protocol.Core.csproj`（`TargetFramework=net6.0`、`Platforms=x86`、`PlatformTarget=x86`、移除 `LangVersion=14.0`、改用 `PackageReference` 參考 `Newtonsoft.Json 13.0.4`），以 `Release|x86` 編譯並覆蓋 `dll/Protocol.Core.dll`。
+6. 執行主方案 Debug 與 Release (x86) 建置並驗證產出之 `runtimeconfig.json` 與 PE 位元架構。
